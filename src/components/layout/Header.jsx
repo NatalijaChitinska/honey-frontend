@@ -7,6 +7,17 @@ function Header() {
   const { itemCount } = useCart();
 
   return (
+   <>
+   {/* Top moving teaser */}
+   <div className="top-teaser">
+        <div className="top-teaser__track">
+          <span>🚚 Бесплатна достава за повеќе од 4 производи!</span>
+          <span>🚚 Бесплатна достава за повеќе од 4 производи!</span>
+          <span>🚚 Бесплатна достава за повеќе од 4 производи!</span>
+          <span>🚚 Бесплатна достава за повеќе од 4 производи!</span>
+        </div>
+      </div>
+
     <header className="layout-header">
       <Link to="/api" className="layout-header__logo">
        <img class='header__logo'
@@ -23,6 +34,7 @@ function Header() {
         </Link>
       </nav>
     </header>
+    </>
   );
 }
 

@@ -10,7 +10,16 @@ function CartPage() {
     <div className="page page--cart">
 
       {items.length === 0 ? (
-        <p>Вашата кошничка е празна. <Link to="/api/products">Разгледајте производи</Link>.</p>
+        <div className="cart-empty">
+        <div className="cart-empty__card">
+          <h2>Вашата кошничка е празна.</h2>
+          <p>Додадете мед во кошничката и започнете со нарачка.</p>
+    
+          <Link to="/api/products" className="button button--primary">
+            Разгледај производи
+          </Link>
+        </div>
+        </div>
       ) : (
         <>
         <h1>Вашата кошничка</h1>

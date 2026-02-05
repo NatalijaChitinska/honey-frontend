@@ -16,7 +16,7 @@ function ProductCard({ product }) {
       <Link to={`/api/products/${id}`}>
         <ProductImage src={imageUrl} alt={name} />
         <h3 className="product-card__title">{name}</h3>
-        <p className="product-card__price">€{Number(price).toFixed(2)}</p>
+        <p className="product-card__price">{Number(price)} ден.</p>
       </Link>
       <button type="button" className="product-card__add" onClick={handleAddToCart}>
         Додади во кошничка

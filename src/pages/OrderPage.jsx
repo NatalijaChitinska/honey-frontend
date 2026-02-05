@@ -8,7 +8,8 @@ function OrderPage() {
   const navigate = useNavigate();
   const { items, total, clearCart } = useCart();
   const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [shippingAddress, setShippingAddress] = useState('');
   const [city, setCity] = useState('');
   const [phone, setPhone] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -22,6 +23,9 @@ function OrderPage() {
       .create({
         customerName: name.trim(),
         customerPhone: phone.trim(),
+        customerEmail: email.trim(),
+        shippingAddress: shippingAddress.trim(),
+      
         items: items.map(({ productId, name: itemName, price, quantity }) => ({
           productId,
           productName: itemName,
@@ -32,7 +36,7 @@ function OrderPage() {
       })
       .then(() => {
         clearCart();
-        navigate('/api', { state: { orderSuccess: true } });
+        navigate('/api/thankyou', { state: { orderSuccess: true } });
       })
       .catch((err) => {
         setError(err.message ?? 'Order failed');
@@ -65,11 +69,21 @@ function OrderPage() {
           />
         </label>
         <label>
+          Е-пошта
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="пр. ime.prezime@gmail.com"
+          />
+        </label>
+        <label>
           Адреса
           <input
             type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={shippingAddress}
+            onChange={(e) => setShippingAddress(e.target.value)}
             required
             placeholder="Улица и број"
           />
@@ -91,7 +105,7 @@ function OrderPage() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
-            placeholder="Вашиот телефонски број"
+            placeholder="070123456"
           />
         </label>
         {error && <p className="error">{error}</p>}
