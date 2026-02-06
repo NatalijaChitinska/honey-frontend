@@ -15,6 +15,16 @@ function OrderPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
+  const macedonianCities = [
+    "Берово", "Битола", "Богданци", "Валандово", "Велес", "Виница", 
+    "Гевгелија", "Гостивар", "Дебар", "Делчево", "Демир Капија", "Демир Хисар", 
+    "Кавадарци", "Кичево", "Кочани", "Кратово", "Крива Паланка", "Крушево", 
+    "Куманово", "Македонски Брод", "Македонска Каменица", "Неготино", "Охрид", 
+    "Пехчево", "Прилеп", "Пробиштип", "Радовиш", "Ресен", "Свети Николе", 
+    "Скопје", "Струга", "Струмица", "Тетово", "Штип"
+  ].sort((a, b) => a.localeCompare(b, 'mk')); 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(null);
@@ -25,6 +35,7 @@ function OrderPage() {
         customerPhone: phone.trim(),
         customerEmail: email.trim(),
         shippingAddress: shippingAddress.trim(),
+        city: city.trim(),
       
         items: items.map(({ productId, name: itemName, price, quantity }) => ({
           productId,
@@ -39,15 +50,32 @@ function OrderPage() {
         navigate('/api/thankyou', { state: { orderSuccess: true } });
       })
       .catch((err) => {
-        setError(err.message ?? 'Order failed');
+        let errorString = typeof err === 'string' ? err : err.message || "";
+        // 2. Remove the "Error: " prefix if it exists so we can parse the JSON
+        if (errorString.startsWith("Error: ")) {
+            errorString = errorString.replace("Error: ", "");
+        }
+        try {
+          const parsed = JSON.parse(errorString);
+          setError(parsed.message || "Настана грешка при нарачката.");
+        } catch (e) {
+          setError(errorString || "Настана грешка при нарачката.");
+        }
         setSubmitting(false);
       });
   };
 
   if (items.length === 0) {
     return (
-      <div className="page page--order">
-        <p>Вашата кошничка е празна. <Link to="/api/products">Додадете производи</Link> прво.</p>
+      <div className="cart-empty">
+      <div className="cart-empty__card">
+        <h2>Вашата кошничка е празна.</h2>
+        <p>Додадете мед во кошничката и започнете со нарачка.</p>
+  
+        <Link to="/api/products" className="button button--primary">
+          Разгледај производи
+        </Link>
+      </div>
       </div>
     );
   }
@@ -90,13 +118,16 @@ function OrderPage() {
         </label>
         <label>
           Град
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-            placeholder="Град"
-          />
+          <select
+                  value = {city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  >
+                  <option value="">-- Изберете град --</option>  
+                  {macedonianCities.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+          </select>
         </label>
         <label>
           Телефонски број

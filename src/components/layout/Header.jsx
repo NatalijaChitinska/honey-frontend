@@ -20,7 +20,7 @@ function Header() {
 
     <header className="layout-header">
       <Link to="/api" className="layout-header__logo">
-       <img class='header__logo'
+       <img className='header__logo'
           src={logo}
           alt="Honey background"
         />
