@@ -62,7 +62,8 @@ function HomePage() {
         <div className="shop-cta__content">
           <h2>Пробај го вкусот на природата</h2>
           <p>
-            Избери од нашата понуда: багремов, шумски и мешан мед, со внимателно одбрани тегли и пакувања.
+            Избери од нашата понуда: интензивен планински или ароматичен ливадски.<br>
+            </br> ... или одбери ги двата - комплетно медено уживање!
           </p>
           <Link to="/api/products" className="button button--shop">
             Посети ја продавницата
@@ -71,9 +72,9 @@ function HomePage() {
       </section>
 
       <section className="featured">
-        <h2>Препорачани производи</h2>
+        <h2>Нашата понуда</h2>
         {loading && <p>Loading…</p>}
-        {error && <p className="error">Could not load products: {error}</p>}
+        {error && <p className="error">Не може да се вчитаат производите: {error}</p>}
         {!loading && !error && (
           featured.length > 0 ? (
             <ProductGrid products={featured} />

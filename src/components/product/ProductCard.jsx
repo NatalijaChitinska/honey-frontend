@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
 import ProductImage from './ProductImage.jsx';
+import honeyimg from '../../assets/honey-jar.jpeg';
 
 function ProductCard({ product }) {
   const { id, name, price, imageUrl } = product;
@@ -14,9 +15,9 @@ function ProductCard({ product }) {
   return (
     <article className="product-card">
       <Link to={`/api/products/${id}`}>
-        <ProductImage src={imageUrl} alt={name} />
+        <ProductImage src={honeyimg} alt={name} />
         <h3 className="product-card__title">{name}</h3>
-        <p className="product-card__price">€{Number(price).toFixed(2)}</p>
+        <p className="product-card__price">{Number(price)} ден.</p>
       </Link>
       <button type="button" className="product-card__add" onClick={handleAddToCart}>
         Додади во кошничка

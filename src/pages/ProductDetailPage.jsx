@@ -41,7 +41,7 @@ function ProductDetailPage() {
         <ProductImage src={product.imageUrl} alt={product.name} />
         <div className="product-detail__info">
           <h1>{product.name}</h1>
-          <p className="product-detail__price">€{Number(product.price).toFixed(2)}</p>
+          <p className="product-detail__price">{Number(product.price)} ден.</p>
           {product.description && <p className="product-detail__desc">{product.description}</p>}
           <button type="button" className="button" onClick={handleAddToCart}>
             Додади во кошничка

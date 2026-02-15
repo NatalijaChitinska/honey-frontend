@@ -8,7 +8,7 @@ function CartItem({ productId, name, price, quantity, imageUrl }) {
       {imageUrl && <img src={imageUrl} alt={name} className="cart-item__img" />}
       <div className="cart-item__info">
         <span className="cart-item__name">{name}</span>
-        <span className="cart-item__price">€{Number(price).toFixed(2)}</span>
+        <span className="cart-item__price">{Number(price)} ден.</span>
       </div>
       <div className="cart-item__qty">
         <button type="button" onClick={() => updateQuantity(productId, quantity - 1)} aria-label="Decrease">−</button>
