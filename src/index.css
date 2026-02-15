@@ -518,3 +518,51 @@ body { margin: 0; font-family: system-ui, -apple-system, sans-serif; line-height
   font-size: 14px;
   opacity: 0.85;
 }
+
+.form-content {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Allows stacking on mobile */
+  margin-bottom: 20px;
+}
+
+.form-main {
+  flex: 1;
+  min-width: 300px; /* Minimum width before stacking */
+}
+
+.form-side {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form-side textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; /* Allows user to resize height only */
+}
+
+.order-form .button {
+  display: block;
+  width: 100%; /* Or fit-content if you prefer it smaller */
+}
+
+/* Color the stars red */
+.required-star {
+  color: #e74c3c; /* Red color for the asterisk */
+  margin-left: 4px;
+  display: inline;
+}
+
+/* Style the legend at the bottom */
+.required-legend {
+  font-size: 0.85rem;
+  color: #666; /* Pull it slightly closer to the grid */
+  margin-bottom: 20px;
+  font-style: italic;
+  margin-top: -20px;
+}

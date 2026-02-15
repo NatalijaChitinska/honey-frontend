@@ -14,6 +14,7 @@ function OrderPage() {
   const [phone, setPhone] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const [notes, setNotes] = useState('');
 
   const macedonianCities = [
     "Берово", "Битола", "Богданци", "Валандово", "Велес", "Виница", 
@@ -36,6 +37,7 @@ function OrderPage() {
         customerEmail: email.trim(),
         shippingAddress: shippingAddress.trim(),
         city: city.trim(),
+        notes: notes.trim(),
       
         items: items.map(({ productId, name: itemName, price, quantity }) => ({
           productId,
@@ -84,61 +86,84 @@ function OrderPage() {
     <div className="page page--order">
       <h1>Направете нарачка</h1>
       <CartSummary />
-      <p>Достава: {Number(150).toFixed(2)} ден.</p>
+      
       <form className="order-form" onSubmit={handleSubmit}>
-        <label>
-          Име
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            placeholder="Вашето име"
-          />
-        </label>
-        <label>
-          Е-пошта
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="пр. ime.prezime@gmail.com"
-          />
-        </label>
-        <label>
-          Адреса
-          <input
-            type="text"
-            value={shippingAddress}
-            onChange={(e) => setShippingAddress(e.target.value)}
-            required
-            placeholder="Улица и број"
-          />
-        </label>
-        <label>
-          Град
-          <select
-                  value = {city}
-                  onChange={(e) => setCity(e.target.value)}
-                  required
-                  >
-                  <option value="">-- Изберете град --</option>  
-                  {macedonianCities.map((c) => (
-                    <option key={c} value={c}>{c}</option>
-                  ))}
-          </select>
-        </label>
-        <label>
-          Телефонски број
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-            placeholder="070123456"
-          />
-        </label>
+        <div className="form-content">
+          {/* Left Side: Standard Fields */}
+          <div className="form-main">
+            <label>
+              Име *
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Вашето име"
+              />
+            </label>
+            <label>
+              Е-пошта *
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="пр. ime.prezime@gmail.com"
+              />
+            </label>
+            <label>
+              Адреса *
+              <input
+                type="text"
+                value={shippingAddress}
+                onChange={(e) => setShippingAddress(e.target.value)}
+                required
+                placeholder="Улица и број"
+              />
+            </label>
+            <label>
+              Град *
+              <select
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              >
+                <option value="">-- Изберете град --</option>
+                {macedonianCities.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Телефонски број *
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+                placeholder="070123456"
+              />
+            </label>
+          </div>
+  
+          {/* Right Side: Notes Field */}
+          <div className="form-side">
+            <label>
+              Забелешки
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Додадете ги вашите забелешки овде..."
+                rows="10"
+              />
+            </label>
+          </div>
+        </div>
+
+        <p className="required-legend">
+          <span className="required-star">*</span> Полињата се задолжителни
+        </p>
+  
         {error && <p className="error">{error}</p>}
         <button type="submit" className="button" disabled={submitting}>
           {submitting ? 'Се испраќа...' : 'Направи нарачка'}
