@@ -7,6 +7,9 @@ import ProductDetailPage from './pages/ProductDetailPage.jsx';
 import CartPage from './pages/CartPage.jsx';
 import OrderPage from './pages/OrderPage.jsx';
 import ThankyouPage from './pages/ThankyouPage.jsx';
+import AboutPage from './pages/AboutPage.jsx';
+import PrivacyPage from './pages/PrivacyPage.jsx';
+import RefundPage from './pages/RefundPage.jsx';
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
             <Route path="cart" element={<CartPage />} />
             <Route path="order" element={<OrderPage />} />
             <Route path="thankyou" element={<ThankyouPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="privacy" element={<PrivacyPage />} />
+            <Route path="refund" element={<RefundPage />} />
           </Route>
         </Routes>
       </CartProvider>
