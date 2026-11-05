@@ -1,42 +1,25 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { productsApi } from '../api/endpoints.js';
-import ProductGrid from '../components/product/ProductGrid.jsx';
 import honeyVideo from '../assets/honey.mp4';
 
 function HomePage() {
-  const [featured, setFeatured] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    productsApi
-      .getFeatured()
-      .then((list) => setFeatured(Array.isArray(list) ? list : []))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
-
   return (
     <div className="page page--home">
       <section className="hero">
         <video className="hero__bg" autoPlay muted loop playsInline>
           <source src={honeyVideo} type="video/mp4" />
         </video>
-        <div className='hero__content'>
+        <div className="hero__content">
           <h1>Малешевски Мед</h1>
-          <p>Природен и Чист </p>
+          <p>Природен и чист</p>
           <Link to="/api/products" className="button">Заслади се</Link>
         </div>
       </section>
 
-
-      {/* SHORT INTRO SECTION */}
       <section className="intro">
         <h2>Зошто ОрМед?</h2>
         <p>
-          Нашиот мед доаѓа директно од малешевские планини и ливади, со традиционален пристап и љубов кон пчелите.
-          Секој тегличка е природен дар од планината.
+          Нашиот мед доаѓа директно од малешевските планини и ливади, со традиционален пристап и љубов кон пчелите.
+          Секој тегличка е дар од природата.
         </p>
 
         <div className="intro__highlights">
@@ -44,12 +27,10 @@ function HomePage() {
             <h3>🌿 100% природен</h3>
             <p>Без додадени шеќери, без адитиви, без компромис.</p>
           </div>
-
           <div className="highlight-card">
             <h3>🐝 100% домашен</h3>
             <p>Традиционален процес, со љубов и грижа кон пчелите и природата.</p>
           </div>
-
           <div className="highlight-card">
             <h3>🏔️ Малешевија</h3>
             <p>Мед од чиста планинска средина со богата флора.</p>
@@ -57,31 +38,38 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SHOP CTA SECTION */}
+      <section className="how-it-works">
+        <h2>Како да нарачате</h2>
+        <div className="how-it-works__steps">
+          <article className="step-card">
+            <span className="step-card__number">1</span>
+            <h3>Изберете мед</h3>
+            <p>Разгледајте ја понудата и додадете го омилениот мед во кошничката.</p>
+          </article>
+          <article className="step-card">
+            <span className="step-card__number">2</span>
+            <h3>Внесете податоци</h3>
+            <p>Пополнете име, телефон и адреса за достава — ние се грижиме за останатото.</p>
+          </article>
+          <article className="step-card">
+            <span className="step-card__number">3</span>
+            <h3>Примете ја пратката</h3>
+            <p>Медот пристигнува до вашиот дом. Бесплатна достава за повеќе од 4 производи.</p>
+          </article>
+        </div>
+      </section>
+
       <section className="shop-cta">
         <div className="shop-cta__content">
           <h2>Пробај го вкусот на природата</h2>
           <p>
-            Избери од нашата понуда: интензивен планински или ароматичен ливадски.<br>
-            </br> ... или одбери ги двата - комплетно медено уживање!
+            Избери од нашата понуда: интензивен планински или ароматичен ливадски.
+            Или одбери ги двата — комплетно медено уживање!
           </p>
           <Link to="/api/products" className="button button--shop">
             Посети ја продавницата
           </Link>
         </div>
-      </section>
-
-      <section className="featured">
-        <h2>Нашата понуда</h2>
-        {loading && <p>Loading…</p>}
-        {error && <p className="error">Не може да се вчитаат производите: {error}</p>}
-        {!loading && !error && (
-          featured.length > 0 ? (
-            <ProductGrid products={featured} />
-          ) : (
-            <p>No featured products. <Link to="/api/products">Видете ги сите производи</Link>.</p>
-          )
-        )}
       </section>
     </div>
   );
