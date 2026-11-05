@@ -10,6 +10,7 @@ import ThankyouPage from './pages/ThankyouPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import PrivacyPage from './pages/PrivacyPage.jsx';
 import RefundPage from './pages/RefundPage.jsx';
+import ContactPage from './pages/ContactPage.jsx';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="about" element={<AboutPage />} />
             <Route path="privacy" element={<PrivacyPage />} />
             <Route path="refund" element={<RefundPage />} />
+              <Route path="contact" element={<ContactPage />} />
           </Route>
         </Routes>
       </CartProvider>

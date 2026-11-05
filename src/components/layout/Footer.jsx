@@ -8,7 +8,7 @@ function Footer() {
       <div className="layout-footer__inner">
         <div className="layout-footer__col">
           <h3>ОрМед</h3>
-          <p>Природен мед од Малешевија. Семеен пристап, чисти ливади и грижа за пчелите.</p>
+          <p>Природен мед од Малешевијата. Семеен пристап, чиста природа и грижа за пчелите.</p>
         </div>
         <div className="layout-footer__col">
           <h3>Информации</h3>
@@ -25,11 +25,6 @@ function Footer() {
             <Link to="/api/cart">Кошничка</Link>
             <Link to="/api/order">Нарачка</Link>
           </nav>
-        </div>
-        <div className="layout-footer__col">
-          <h3>Достава</h3>
-          <p>Бесплатна достава за повеќе од 4 производи.</p>
-          <p>Испорака низ Северна Македонија.</p>
         </div>
       </div>
       <p className="layout-footer__copy">© ОрМед, {year}</p>

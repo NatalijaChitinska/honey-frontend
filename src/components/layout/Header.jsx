@@ -28,6 +28,7 @@ function Header() {
       <nav className="layout-header__nav">
         <Link to="/api">Почетна</Link>
         <Link to="/api/products">Производи</Link>
+          <Link to={"/api/contact"}>Контакт</Link>
         <Link to="/api/cart" className="layout-header__cart-link">
           Кошничка
           <CartIcon count={itemCount} />
