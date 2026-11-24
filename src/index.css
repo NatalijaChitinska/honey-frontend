@@ -118,8 +118,22 @@ body { margin: 0; font-family: system-ui, -apple-system, sans-serif; line-height
 .layout-footer__inner{
     width: min(960px, 100%);   /* same content width as main area */
     margin: 0 auto;            /* centered */
-    padding-inline: 1.5rem;    /* equal left/right inner spacing */
+    padding-inline: 1.5rem;
+    padding-bottom: 1.25rem;/* equal left/right inner spacing */
     box-sizing: border-box;
+}
+
+.contact-title {
+    margin: 0 0 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-icon {
+    color: #8F561B;
+    font-size: 1.1rem;
+    flex-shrink: 0;
 }
 
 .layout-footer__inner {
@@ -152,10 +166,9 @@ body { margin: 0; font-family: system-ui, -apple-system, sans-serif; line-height
   text-decoration: underline;
 }
 .layout-footer__copy {
-    width: min(960px, 100%);
-    margin: 2rem auto 0;
-    padding: 1.25rem 1.5rem 0;
-    box-sizing: border-box;
+    width: 100%;
+    margin: 2rem 0 0;
+    padding-top: 1.25rem;
     border-top: 1px solid rgba(255, 246, 229, 0.25);
     text-align: center;
     opacity: 0.85;
