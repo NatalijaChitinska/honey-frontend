@@ -1,4 +1,5 @@
 import contactImg from '../assets/imgcontact.png';
+import { FiMapPin, FiMail, FiPhone } from 'react-icons/fi';
 
 function ContactPage() {
     return (
@@ -18,15 +19,24 @@ function ContactPage() {
             <hr className="ormed-divider" />
             <h2>Контакт информации</h2>
             <div className={"contact-group"}>
-                <h3>Локација</h3>
+                <h3 className={'contact-title'}>
+                    <FiMapPin className="contact-icon" aria-hidden="true" />
+                    <span>Локација</span>
+                </h3>
                 <span className={"contact-span"}>Во срцето на Малешевијата – Берово</span>
             </div>
             <div className={"contact-group"}>
-                <h3>Е-пошта</h3>
+                <h3 className={'contact-title'}>
+                    <FiMail className="contact-icon" aria-hidden="true" />
+                    <span>Е-пошта</span>
+                </h3>
                 <span className={"contact-span"}>info@ormed.mk</span>
             </div>
             <div className={"contact-group"}>
-                <h3>Телефон</h3>
+                <h3 className={'contact-title'}>
+                    <FiPhone className="contact-icon" aria-hidden="true" />
+                    <span>Телефон</span>
+                </h3>
                 <span className={"contact-span"}>+389 70 123 456</span>
             </div>
             <hr className="ormed-divider" />
