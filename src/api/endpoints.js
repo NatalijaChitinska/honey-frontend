@@ -2,6 +2,7 @@ import { api } from './client.js';
 
 const PRODUCTS = '/products';
 const ORDERS = '/orders';
+const CONTACT_MESSAGES = '/contact-messages';
 
 /**
  * Extract product list from backend response (array, or wrapped in content/data/_embedded).
@@ -46,4 +47,8 @@ export const productsApi = {
 
 export const ordersApi = {
   create: (order) => api.post(ORDERS, order),
+};
+
+export const contactMessagesApi = {
+    create: (payload) => api.post(CONTACT_MESSAGES, payload),
 };

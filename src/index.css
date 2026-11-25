@@ -880,3 +880,54 @@ body { margin: 0; font-family: system-ui, -apple-system, sans-serif; line-height
 .arrow--open {
   transform: rotate(180deg);
 }
+.contact-form-section {
+    margin: 1.5rem 0;
+}
+
+.contact-form {
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-weight: 500;
+    color: #4a3424;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #d3c2b4;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fffdf9;
+}
+
+.contact-form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.contact-form .button {
+    width: fit-content;
+    min-width: 170px;
+}
+
+.contact-form__status {
+    margin: 0;
+    font-weight: 600;
+}
+
+.contact-form__status--error {
+    color: #b00020;
+}
+
+.contact-form__status--success {
+    color: #2f7a2f;
+}
